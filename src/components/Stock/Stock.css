@@ -1,0 +1,59 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
+
+/* stocks */
+.stocks {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+}
+.stocks li {
+  flex: 0 1 29rem;
+  height: 47rem;
+  padding: 1rem;
+}
+.stock {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+.stock img {
+  width: 35rem;
+  height: 35rem;
+}
+.stock-price {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.stock-price div,
+.stock-price button {
+  text-align: center;
+  flex: 1;
+}
+.stock-price div {
+  font-size: 2rem;
+}
+.button {
+  padding: 1rem;
+  border: 0.1rem #c0c0c0 solid;
+  background-color: #f0f0f0;
+  cursor: pointer;
+}
+.button:hover {
+  border: 0.1rem #808080 solid;
+}
+.button.primary {
+  background-color: #f0c040;
+}
+.buttonSize1 {
+  margin-right: 1rem;
+}
+.buttonSize2 {
+  background-color: #f0c040;
+  margin-right: 1rem;
+}
