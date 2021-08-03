@@ -2,8 +2,10 @@ import React, { useState, useEffect } from "react";
 import useFetch from "react-fetch-hook";
 import Stock from "./components/Stock/Stock";
 import SearchBar from "./components/SearchBar/SearchBar";
+import DropDown from "./components/DropDown/DropDown";
 import "./App.css";
 import db from "./firebase";
+
 // import firebase from "firebase";
 
 function App() {
@@ -36,6 +38,7 @@ function App() {
         <div className="content">
           <div className="main">
             <SearchBar />
+            <DropDown />
             <Stock stocks={stocks} />
           </div>
         </div>
