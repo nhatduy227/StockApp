@@ -20,4 +20,11 @@ The page will reload if you make edits.\
 You will also see any lint errors in the console.
 
 ### `npm install`
+Run to get your app node modules up-to-date
+
+### `npm run build`
+Create build package for optimizing deployment process
+
+### `firebase deploy`
+Manually deploy new changes to the live site at: https://stockapp-6e0a4.web.app
 
