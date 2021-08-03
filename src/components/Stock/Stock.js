@@ -3,9 +3,6 @@ import Fade from "react-reveal/Fade";
 import "./Stock.css";
 
 export default function Stock(props) {
-  function formatCurrency(num) {
-    return "$" + Number(num.toFixed(1).toLocaleString() + " ");
-  }
   return (
     <div>
       <Fade bottom cascade={true}>
@@ -16,7 +13,7 @@ export default function Stock(props) {
                 <img src={stock.image} alt={stock.title}></img>
                 <p>{stock.title}</p>
                 <div className="stock-price">
-                  <div>{formatCurrency(stock.price)}</div>
+                  <div>{stock.score}</div>
                   <button className="button primary">
                     View Stock in detail
                   </button>
