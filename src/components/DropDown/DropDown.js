@@ -1,6 +1,5 @@
 import React from "react";
-
-let tickers = ["appl", "tsla", "mmm", "abt"];
+const tickers = require('../../data/tickers.json')
 
 export default function DropDown() {
   return (
