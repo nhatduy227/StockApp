@@ -15,7 +15,7 @@
     "react-fetch-hook": "^1.8.5",
     "react-modal": "^3.12.1",
     "react-reveal": "^1.2.2",
-    "react-scripts": "^1.1.5",
+    "react-scripts": "^4.0.3",
     "request": "^2.88.2",
     "web-vitals": "^0.2.4",
     "yahoo-finance": "^0.3.7"
