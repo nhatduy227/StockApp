@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import StockPage from "./components/StockPage/StockPage";
 import LandingPage from "./components/LandingPage/LandingPage";
+import Navbar from "./components/NavBar/NavBar";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import "./App.css";
 
@@ -10,7 +11,8 @@ function App() {
       <Router>
         <div className="grid-container">
           <header>
-            <a href="/">InvestiGator</a>
+            {" "}
+            <Navbar />
           </header>
           <main>
             <div className="content">
