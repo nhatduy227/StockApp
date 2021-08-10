@@ -9,7 +9,6 @@ function Navbar() {
   const closeMobileMenu = () => setClick(false);
 
   return (
-    <>
       <div className="navbar-container">
         <Link to="/" className="navbar-logo" onClick={closeMobileMenu}>
           InverstiGator
@@ -34,7 +33,6 @@ function Navbar() {
           </li>
         </ul>
       </div>
-    </>
   );
 }
 

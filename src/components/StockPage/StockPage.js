@@ -3,6 +3,7 @@ import Fade from "react-reveal/Fade";
 import SearchBar from "../SearchBar/SearchBar";
 import "./StockPage.css";
 import db from "../../firebase";
+import Graph from "../Graph/Graphs";
 
 export default function StockPage() {
   const [stocks, setStocks] = useState([]);
@@ -21,6 +22,7 @@ export default function StockPage() {
   function Stock({ stocks }) {
     return (
       <div>
+        <Graph></Graph>
         <Fade bottom cascade={true}>
           <ul className="stocks">
             {stocks.map((stock) => (
@@ -43,9 +45,9 @@ export default function StockPage() {
     );
   }
   return (
-    <>
+    <div>
       <SearchBar />
       <Stock stocks={stocks} />
-    </>
+    </div>
   );
 }
