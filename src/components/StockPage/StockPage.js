@@ -43,9 +43,9 @@ export default function StockPage() {
     );
   }
   return (
-    <>
+    <div>
       <SearchBar />
       <Stock stocks={stocks} />
-    </>
+    </div>
   );
 }

@@ -7,7 +7,6 @@ import "./App.css";
 
 function App() {
   return (
-    <>
       <Router>
         <div className="grid-container">
           <header>
@@ -26,7 +25,6 @@ function App() {
           </main>
         </div>
       </Router>
-    </>
   );
 }
 

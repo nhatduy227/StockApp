@@ -9,10 +9,11 @@ function Navbar() {
   const closeMobileMenu = () => setClick(false);
 
   return (
-    <>
       <div className="navbar-container">
+        
+        <img src={process.env.PUBLIC_URL + '/favicon.ico'} alt="favicon"/>
         <Link to="/" className="navbar-logo" onClick={closeMobileMenu}>
-          InverstiGator
+          InvestiGator
         </Link>
         <div className="menu-icon" onClick={handleClick}>
           <i className={click ? "fas fa-times" : "fas fa-bars"} />
@@ -34,7 +35,6 @@ function Navbar() {
           </li>
         </ul>
       </div>
-    </>
   );
 }
 
