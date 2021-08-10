@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import Fade from "react-reveal/Fade";
 import SearchBar from "../SearchBar/SearchBar";
+import { Link } from "react-router-dom";
 import "./StockPage.css";
 import db from "../../firebase";
-import Graph from "../Graph/Graphs";
 
 export default function StockPage() {
   const [stocks, setStocks] = useState([]);
@@ -22,7 +22,6 @@ export default function StockPage() {
   function Stock({ stocks }) {
     return (
       <div>
-        <Graph></Graph>
         <Fade bottom cascade={true}>
           <ul className="stocks">
             {stocks.map((stock) => (
@@ -32,9 +31,14 @@ export default function StockPage() {
                   <p>{stock.title}</p>
                   <div className="stock-price">
                     <div>{stock.score}</div>
-                    <button className="button primary">
-                      View Stock in detail
-                    </button>
+                    <Link
+                      to="/graphpage"
+                      className="nav-links"
+                    >
+                      <button className="button primary">
+                        View Stock in detail
+                      </button>
+                    </Link>
                   </div>
                 </div>
               </li>
