@@ -6,6 +6,7 @@ import db from "../../firebase";
 
 export default function StockPage() {
   const [stocks, setStocks] = useState([]);
+  const [search, setSearch] = useState("");
   useEffect(() => {
     db.collection("stocks").onSnapshot((snapshot) => {
       setStocks(
@@ -18,6 +19,16 @@ export default function StockPage() {
       );
     });
   }, []);
+  function handleSearch(e) {
+    console.log(e.target.value);
+    setSearch(e.target.value);
+  }
+  function filterBySearch(array) {
+    const filtered_by_search = array.filter((s) =>
+      s.title.toLowerCase().includes(search.toLowerCase())
+    );
+    return filtered_by_search;
+  }
   function Stock({ stocks }) {
     return (
       <div>
@@ -44,8 +55,8 @@ export default function StockPage() {
   }
   return (
     <>
-      <SearchBar />
-      <Stock stocks={stocks} />
+      <SearchBar onChange={handleSearch} value={search} />
+      <Stock stocks={filterBySearch(stocks)} />
     </>
   );
 }
