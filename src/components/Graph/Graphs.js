@@ -11,7 +11,7 @@ import React, { Component } from "react";
 
 import { format, parseISO } from "date-fns";
 let data = require("../../data/AAPL_stonks.json");
-// data.splice(1000);
+data.splice(1000);
 /**
  * clean formats the date string into the JS datetime object
  * and sorts the array of stock data by the date from earliest-latest
@@ -47,6 +47,7 @@ function Graph() {
         <Area dataKey="close" stroke="#85F485" fill="url(#color)" />
         <XAxis
           dataKey="date"
+          padding={{ left: 20, right: 20 }}
           minTickGap={50}
           axisLine={false}
           tickLine={false}
