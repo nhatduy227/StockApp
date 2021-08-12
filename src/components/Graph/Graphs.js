@@ -11,7 +11,7 @@ import React, { Component } from "react";
 
 import { format, parseISO } from "date-fns";
 let data = require("../../data/AAPL_stonks.json");
-data.splice(1000);
+// data.splice(1000);
 /**
  * clean formats the date string into the JS datetime object
  * and sorts the array of stock data by the date from earliest-latest
@@ -28,7 +28,7 @@ function clean() {
   });
 
   for (let day of data) {
-    day.date = format(new Date(day.date), "yyyy-MM-dd");
+    day.date = new Date(day.date).toISOString().substr(0, 10);
   }
 
   return data;
@@ -47,16 +47,9 @@ function Graph() {
         <Area dataKey="close" stroke="#85F485" fill="url(#color)" />
         <XAxis
           dataKey="date"
+          minTickGap={50}
           axisLine={false}
           tickLine={false}
-          tickFormatter={(str) => {
-            const date = parseISO(str);
-            if (date.getDate() % 36 === 0) {
-              
-              return str;
-            }
-            return "";
-          }}
         />
         <YAxis
           dataKey="close"
