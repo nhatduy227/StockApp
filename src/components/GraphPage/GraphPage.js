@@ -10,14 +10,14 @@ export default function GraphPage() {
       <h1>AAPL Stock</h1>
       <Card>
         <ButtonGroup size="lg">
-          <Button>1 day</Button>
-          <Button>5 day</Button>
-          <Button>1 month</Button>
-          <Button>6 months</Button>
-          <Button>YTD</Button>
-          <Button>1 year</Button>
-          <Button>5 years</Button>
-          <Button>Max</Button>
+          <Button variant="light" value="1d">1 day</Button>
+          <Button variant="light" value="5d">5 day</Button>
+          <Button variant="light" value="1m">1 month</Button>
+          <Button variant="light" value="6m">6 months</Button>
+          <Button variant="light" value="ytd">YTD</Button>
+          <Button variant="light" value="1y">1 year</Button>
+          <Button variant="light" value="5y">5 years</Button>
+          <Button variant="light" value="max">Max</Button>
         </ButtonGroup>
         <Card.Body>
           <Graph />
