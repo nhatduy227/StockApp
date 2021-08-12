@@ -1,29 +1,31 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { Container, Row, Col } from 'react-grid';
+
 
 export default function LandingPage() {
   return (
-    <div>
-      {/* Insert hero banner here */}
-      
-      <p>This is the landing page</p>
-      <button>
-        <Link to="/stockpage">Get Start</Link>
-      </button>
-      <div class="grid">
-        <div class="box">
-          <img src={require('./img/stocks.png')} class = "icons" alt ="stocks"/> 
+  <div>
+    {/* Insert hero banner here */}
 
-        </div>
-        <div class="box">
-          <img src={require('./img/investmentPortfolio.png')} class = "icons" alt ="invest"/> 
+    <p>This is the landing page</p>
+    <button>
+      <Link to="/stockpage">Get Start</Link>
+    </button>
+    <Container>
+      <Row>
+        <Col ><img src={require('./img/stocks.png').default} class = "icons" alt ="stocks"/> </Col>
+        <Col ><img src={require('./img/investmentPortfolio.png').default} class = "icons" alt ="invest"/></Col>
+        <Col ><img src={require('./img/financeDuration.png').default} class = "icons" alt ="finance"/> </Col>
+      </Row>
+      <Row>
+        <Col sm>testing one two three</Col>
+        <Col sm>testing one two three</Col>
+        <Col sm>testing one two three</Col>
+      </Row>
 
-        </div>
-        <div class="box">
-          <img src={require('./img/financeDuration.png')} class = "icons" alt ="finance"/> 
+    </Container>
 
-        </div>
-      </div>
-    </div>
+  </div>
   );
 }
