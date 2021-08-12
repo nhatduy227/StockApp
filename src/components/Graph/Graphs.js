@@ -9,7 +9,7 @@ import {
 } from "recharts";
 import React, { Component } from "react";
 
-import { format, parseISO, subDays } from "date-fns";
+import { format, parseISO } from "date-fns";
 let data = require("../../data/AAPL_stonks.json");
 data.splice(1000);
 /**
@@ -18,16 +18,21 @@ data.splice(1000);
  * @returns stock data
  */
 function clean() {
-  data.map((day) => (day.date = new Date(day.date)));
+  for (let day of data) {
+    day.date = new Date(day.date);
+  }
   data.sort((day1, day2) => {
     if (day1.date < day2.date) return -1;
     if (day1.date > day2.date) return 1;
     return 0;
   });
 
+  for (let day of data) {
+    day.date = format(new Date(day.date), "yyyy-MM-dd");
+  }
+
   return data;
 }
-
 
 function Graph() {
   return (
@@ -44,12 +49,20 @@ function Graph() {
           dataKey="date"
           axisLine={false}
           tickLine={false}
+          tickFormatter={(str) => {
+            const date = parseISO(str);
+            if (date.getDate() % 36 === 0) {
+              
+              return str;
+            }
+            return "";
+          }}
         />
         <YAxis
           dataKey="close"
           axisLine={false}
           tickLine={false}
-          tickCount={8}
+          tickCount={7}
           tickFormatter={(number) => `$${number.toFixed(2)}`}
         />
         <Tooltip />
