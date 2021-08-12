@@ -8,10 +8,10 @@ import {
   CartesianGrid,
 } from "recharts";
 import React, { Component } from "react";
-
 import { format, parseISO } from "date-fns";
+
 let data = require("../../data/AAPL_stonks.json");
-data.splice(1000);
+data.splice(500);
 /**
  * clean formats the date string into the JS datetime object
  * and sorts the array of stock data by the date from earliest-latest
@@ -21,6 +21,7 @@ function clean() {
   for (let day of data) {
     day.date = new Date(day.date);
   }
+  
   data.sort((day1, day2) => {
     if (day1.date < day2.date) return -1;
     if (day1.date > day2.date) return 1;
