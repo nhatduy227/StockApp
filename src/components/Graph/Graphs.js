@@ -35,7 +35,8 @@ function clean() {
   return data;
 }
 
-function Graph() {
+function Graph({setSelectedMode}) {
+  console.log(setSelectedMode);
   return (
     <ResponsiveContainer width="100%" height={400}>
       <AreaChart data={clean()}>
