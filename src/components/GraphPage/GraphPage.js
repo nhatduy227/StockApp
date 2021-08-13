@@ -7,15 +7,15 @@ import Container from "react-bootstrap/Container"
 
 
 export default function GraphPage() {
-  const [setSelectedMode] = useState("max");
+  const [selectedRange, setSelectedRange] = useState("max");
 
   return (
     <Container>
       <h1>AAPL Stock</h1>
       <Card>
-        <RangeSelect/>
+        <RangeSelect setSelectedRange={setSelectedRange}/>
         <Card.Body>
-          <Graph setSelectedMode={setSelectedMode}/>
+          <Graph selectedRange={selectedRange}/>
         </Card.Body>
       </Card>
   </Container>
