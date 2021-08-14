@@ -11,7 +11,7 @@ import React, { Component } from "react";
 import { format, parseISO } from "date-fns";
 
 let data = require("../../data/AAPL_stonks.json");
-data.splice(500);
+
 /**
  * clean formats the date string into the JS datetime object
  * and sorts the array of stock data by the date from earliest-latest
