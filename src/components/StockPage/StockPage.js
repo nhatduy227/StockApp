@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Fade from "react-reveal/Fade";
 import SearchBar from "../SearchBar/SearchBar";
+import { Link } from "react-router-dom";
 import "./StockPage.css";
 import db from "../../firebase";
 
@@ -17,6 +18,8 @@ export default function StockPage() {
           score: doc.data().score,
           title: doc.data().title,
           sector: doc.data().sector,
+          symbol: doc.data().symbol,
+
         }))
       );
     });
@@ -31,7 +34,10 @@ export default function StockPage() {
     );
     return filter === "all"
       ? filtered_by_search
-      : filtered_by_search.filter((s) => s.sector?.toLowerCase() === filter);
+      : filtered_by_search.filter((s) => s.sector.toLowerCase() === filter);
+  }
+  function getStock(symbol) {
+    console.log(symbol)
   }
   function Stock({ stocks }) {
     return (
@@ -47,9 +53,14 @@ export default function StockPage() {
                   </p>
                   <div className="stock-price">
                     <div>{stock.score}</div>
-                    <button className="button primary">
-                      View Stock in detail
-                    </button>
+                    <Link
+                      to="/graphpage"
+                      className="nav-links"
+                    >
+                      <button className="button primary" onClick={getStock(stock.symbol)}>
+                        View Stock in detail
+                      </button>
+                    </Link>
                   </div>
                 </div>
               </li>
@@ -78,12 +89,12 @@ export default function StockPage() {
     );
   }
   return (
-    <>
+    <div>
       <div>
         <SearchBar onChange={handleSearch} value={search} />
         <Filter />
       </div>
       <Stock stocks={filterBySearch(stocks)} />
-    </>
+    </div>
   );
 }
