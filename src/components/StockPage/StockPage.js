@@ -7,6 +7,8 @@ import db from "../../firebase";
 
 export default function StockPage() {
   const [stocks, setStocks] = useState([]);
+  const [search, setSearch] = useState("");
+  const [filter, setFilter] = useState("all");
   useEffect(() => {
     db.collection("stocks").onSnapshot((snapshot) => {
       setStocks(
@@ -15,10 +17,28 @@ export default function StockPage() {
           image: doc.data().image,
           score: doc.data().score,
           title: doc.data().title,
+          sector: doc.data().sector,
+          symbol: doc.data().symbol,
+
         }))
       );
     });
   }, []);
+  function handleSearch(e) {
+    console.log(e.target.value);
+    setSearch(e.target.value);
+  }
+  function filterBySearch(array) {
+    const filtered_by_search = array.filter((s) =>
+      s.title.toLowerCase().includes(search.toLowerCase())
+    );
+    return filter === "all"
+      ? filtered_by_search
+      : filtered_by_search.filter((s) => s.sector.toLowerCase() === filter);
+  }
+  function getStock(symbol) {
+    console.log(symbol)
+  }
   function Stock({ stocks }) {
     return (
       <div>
@@ -28,14 +48,16 @@ export default function StockPage() {
               <li key={stock.id}>
                 <div className="stock">
                   <img src={stock.image} alt={stock.title}></img>
-                  <p>{stock.title}</p>
+                  <p>
+                    {stock.title} - {stock.sector}
+                  </p>
                   <div className="stock-price">
                     <div>{stock.score}</div>
                     <Link
                       to="/graphpage"
                       className="nav-links"
                     >
-                      <button className="button primary">
+                      <button className="button primary" onClick={getStock(stock.symbol)}>
                         View Stock in detail
                       </button>
                     </Link>
@@ -48,10 +70,31 @@ export default function StockPage() {
       </div>
     );
   }
+  function Filter() {
+    return (
+      <section id="Filters">
+        <select value={filter} onChange={(e) => setFilter(e.target.value)}>
+          <option value="all">All</option>
+          <option value="energy">Energy</option>
+          <option value="financials">Financials</option>
+          <option value="industrials">Industrials</option>
+          <option value="real estate">Real Estate</option>
+          <option value="consumer staples">Consumer Staples</option>
+          <option value="consumer discretionary">Consumer Discretionary</option>
+          <option value="information technology">Information Technology</option>
+          <option value="health care">Health Care</option>
+          <option value="utilities">Utilities</option>
+        </select>
+      </section>
+    );
+  }
   return (
     <div>
-      <SearchBar />
-      <Stock stocks={stocks} />
+      <div>
+        <SearchBar onChange={handleSearch} value={search} />
+        <Filter />
+      </div>
+      <Stock stocks={filterBySearch(stocks)} />
     </div>
   );
 }

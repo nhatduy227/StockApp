@@ -37,7 +37,7 @@ function clean() {
 
 function getRangeOfStock(range) {
   let cleanedData = clean();
-  let newData = []
+  let newData = [];
   let now = new Date();
   switch (range) {
     case "1d":
@@ -51,7 +51,9 @@ function getRangeOfStock(range) {
     case "ytd":
       break;
     case "1y":
-      let yearAgo = new Date(new Date().setFullYear(new Date().getFullYear() - 1))
+      let yearAgo = new Date(
+        new Date().setFullYear(new Date().getFullYear() - 1)
+      );
       for (let day of cleanedData) {
         let date = new Date(day.date);
         if (date > yearAgo) {

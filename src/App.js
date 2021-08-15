@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import StockPage from "./components/StockPage/StockPage";
 import LandingPage from "./components/LandingPage/LandingPage";
 import GraphPage from "./components/GraphPage/GraphPage";
 import Navbar from "./components/NavBar/NavBar";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-// import "./App.css";
+import "./App.css";
 
 function App() {
   return (

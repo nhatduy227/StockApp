@@ -1,14 +1,15 @@
 import React from "react";
 import "./SearchBar.css";
 
-export default function SearchBar() {
+export default function SearchBar({onChange, value}) {
+  
+  
   return (
     <div className="searchbar">
       <input
-        type="text"
-        id="header-search"
+        onInput={onChange}
+        value={value}
         placeholder="Search for a Stock"
-        name="s"
       />
     </div>
   );
