@@ -1,7 +1,6 @@
 import React from "react";
 
-import Button from "react-bootstrap/Button";
-import ButtonGroup from "react-bootstrap/ButtonGroup";
+import { Button,ButtonGroup} from "react-bootstrap";
 
 export default function RangeSelect({ setSelectedRange }) {
   const setRange = (range) => {
@@ -10,9 +9,6 @@ export default function RangeSelect({ setSelectedRange }) {
 
   return (
     <ButtonGroup size="lg">
-      <Button variant="light" onClick={() => setRange("1d")}>
-        1 day
-      </Button>
       <Button variant="light" onClick={() => setRange("5d")}>
         5 day
       </Button>
