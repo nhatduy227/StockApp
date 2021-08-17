@@ -7,8 +7,7 @@ import {
   Tooltip,
   CartesianGrid,
 } from "recharts";
-import React, { Component } from "react";
-import { format, parseISO } from "date-fns";
+import React from "react";
 
 let data = require("../../data/AAPL_stonks.json");
 
@@ -38,18 +37,15 @@ function clean() {
 function getRangeOfStock(range) {
   let cleanedData = clean();
   let newData = [];
-  let now = new Date();
   switch (range) {
-    case "1d":
-      break;
     case "5d":
-      break;
+      return cleanedData.slice(-5);
     case "1m":
-      break;
+      return cleanedData.slice(-31);
     case "6m":
-      break;
+      return cleanedData.slice(-180);
     case "ytd":
-      break;
+      return cleanedData.slice(-360);
     case "1y":
       let yearAgo = new Date(
         new Date().setFullYear(new Date().getFullYear() - 1)
@@ -62,7 +58,7 @@ function getRangeOfStock(range) {
       }
       return newData;
     case "5y":
-      break;
+      return cleanedData.slice(-1800);
     case "max":
       return cleanedData;
   }
