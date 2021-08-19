@@ -13,7 +13,7 @@ function Navbar() {
         
         <img src={process.env.PUBLIC_URL + '/favicon.ico'} alt="favicon"/>
         <Link to="/" className="navbar-logo" onClick={closeMobileMenu}>
-          InvestiGator
+          <h1 class="display-6">InvestiGators</h1>
         </Link>
         <div className="menu-icon" onClick={handleClick}>
           <i className={click ? "fas fa-times" : "fas fa-bars"} />

@@ -3,7 +3,9 @@ import StockPage from "./components/StockPage/StockPage";
 import LandingPage from "./components/LandingPage/LandingPage";
 import Navbar from "./components/NavBar/NavBar";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import "./App.css";
+//import "./App.css";
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 function App() {
   return (

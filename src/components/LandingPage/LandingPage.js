@@ -1,31 +1,36 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import { Container, Row, Col } from 'react-grid';
+import { Container, Row, Col, Image } from 'react-bootstrap';
 
 
 export default function LandingPage() {
   return (
-  <div>
-    {/* Insert hero banner here */}
+  <div className="text-center">
+    <div> 
+      {/* Insert hero banner here */}
 
-    <p>This is the landing page</p>
-    <button>
-      <Link to="/stockpage">Get Start</Link>
-    </button>
-    <Container>
-      <Row>
-        <Col ><img src={require('./img/stocks.png').default} class = "icons" alt ="stocks"/> </Col>
-        <Col ><img src={require('./img/investmentPortfolio.png').default} class = "icons" alt ="invest"/></Col>
-        <Col ><img src={require('./img/financeDuration.png').default} class = "icons" alt ="finance"/> </Col>
-      </Row>
-      <Row>
-        <Col sm>testing one two three</Col>
-        <Col sm>testing one two three</Col>
-        <Col sm>testing one two three</Col>
-      </Row>
+    </div>
+    <div> 
+      <p class="display-4">Welcome to InvestiGators!</p>
+      <a class="btn btn-outline-success" href="/stockpage" role="button">Click here to browse through the stocks!</a>
+    </div>
+    <br></br>
+    <div>
+      <Container>
+        <Row >
+          <Col ><Image src={require('./img/stocks.png').default} class = "icons" alt ="stocks"/> </Col>
+          <Col ><Image src={require('./img/financeDuration.png').default} class = "icons" alt ="finance"/> </Col>
+          <Col ><Image src={require('./img/investmentPortfolio.png').default} class = "icons" alt ="invest"/></Col>
 
-    </Container>
+        </Row>
+        <br></br>
+        <Row >
+          <Col sm><div class="p-3 mb-2 bg-light text-dark">Get started on your investing journey!</div></Col>
+          <Col sm><div class="p-3 mb-2 bg-light text-dark">Browse and track various stocks!</div></Col>
+          <Col sm><div class="p-3 mb-2 bg-light text-dark">Build up your stock portfolio!</div></Col>
+        </Row>
 
-  </div>
+      </Container>      
+    </div>
+   </div>
   );
 }
