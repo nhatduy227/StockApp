@@ -7,12 +7,9 @@ export default function LandingPage() {
     <div> 
       <Jumbotron>
         <p class="display-4">Welcome to InvestiGators!</p>
-        <Figure>
-          <Figure.Image
-            width={1000}
-            src={require('./img/banner.jpg').default}
-          />
-          </Figure>
+        <p class="lead">Making stock reviews easy for you!</p>
+        <p>Investing is for everyone, whether you're just getting into it or are an industry professional. We're here to help make navigating your options a little easier.</p>
+
       </Jumbotron>
     </div>
     <div> 
