@@ -1,7 +1,7 @@
 const yahooFinance = require("yahoo-finance");
 const fs = require("fs");
-// const tickers = require("./tickers.json");
-const tickers = ["MSFT", "IBM", "AAPL", "TSLA"];
+const tickers = require("./tickers.json");
+
 // Should be saved into Firebase at some point, this is an example
 // of saving all the tickers in the S&P 500 to JSON files
 for (let ticker of tickers) {
@@ -12,7 +12,7 @@ for (let ticker of tickers) {
     },
     function (err, quotes) {
       fs.writeFile(
-        `${ticker}_stonks.json`,
+        `/stock_data/${ticker}_stonks.json`,
         JSON.stringify(quotes),
         "utf8",
         (err) => {
