@@ -1,6 +1,5 @@
-/* SearchBar */
-/* .searchbar {
+.searchbar {
   display: flex;
-  padding: 1rem;
-  margin: 1rem;
-} */
+  border-width:0px;
+  border:none;
+}
