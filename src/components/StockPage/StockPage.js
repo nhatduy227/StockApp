@@ -7,7 +7,7 @@ import db from "../../firebase";
 
 export default function StockPage() {
   const [stocks, setStocks] = useState([]);
-  const [topstocks, setTopStocks] = useState([])
+  // const [topstocks, setTopStocks] = useState([])
   const [search, setSearch] = useState("");
   const [filter, setFilter] = useState("all");
   useEffect(() => {
