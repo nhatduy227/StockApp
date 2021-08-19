@@ -1,25 +1,28 @@
 import React from "react";
-import { Container, Row, Col, Image } from 'react-bootstrap';
-
+import { Container, Row, Col, Image, Jumbotron, Button } from 'react-bootstrap';
 
 export default function LandingPage() {
   return (
   <div className="text-center">
     <div> 
-      {/* Insert hero banner here */}
-
+      <Jumbotron>
+        <p class="display-4">Welcome to InvestiGators!</p>
+        <Image src={require('./img/banner.jpg').default} alt ="banner"/> 
+          <p>
+          This is a simple Jumbotron example.
+        </p>
+      </Jumbotron>
     </div>
     <div> 
-      <p class="display-4">Welcome to InvestiGators!</p>
       <a class="btn btn-outline-success" href="/stockpage" role="button">Click here to browse through the stocks!</a>
     </div>
     <br></br>
     <div>
       <Container>
         <Row >
-          <Col ><Image src={require('./img/stocks.png').default} class = "icons" alt ="stocks"/> </Col>
-          <Col ><Image src={require('./img/financeDuration.png').default} class = "icons" alt ="finance"/> </Col>
-          <Col ><Image src={require('./img/investmentPortfolio.png').default} class = "icons" alt ="invest"/></Col>
+          <Col ><Image src={require('./img/stocks.png').default} alt ="stocks"/> </Col>
+          <Col ><Image src={require('./img/financeDuration.png').default} alt ="finance"/> </Col>
+          <Col ><Image src={require('./img/investmentPortfolio.png').default} alt ="invest"/></Col>
 
         </Row>
         <br></br>
