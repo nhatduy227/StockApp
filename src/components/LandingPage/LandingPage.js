@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Row, Col, Image, Jumbotron, Button } from 'react-bootstrap';
+import { Container, Row, Col, Image, Jumbotron, Button, } from 'react-bootstrap';
 
 export default function LandingPage() {
   return (
@@ -7,7 +7,7 @@ export default function LandingPage() {
     <div> 
       <Jumbotron>
         <p class="display-4">Welcome to InvestiGators!</p>
-        <Image src={require('./img/banner.jpg').default} alt ="banner"/> 
+        <Image src={require('./img/banner.jpg').default} alt ="banner" fluid /> 
           <p>
           This is a simple Jumbotron example.
         </p>
