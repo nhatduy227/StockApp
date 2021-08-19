@@ -1,13 +1,39 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Container, Row, Col, Image, Jumbotron, Button, } from 'react-bootstrap';
 
 export default function LandingPage() {
   return (
-    <div>
-      <p>This is the landing page</p>
-      <button>
-        <Link to="/stockpage">Get Start</Link>
-      </button>
+  <div className="text-center">
+    <div> 
+      <Jumbotron>
+        <p class="display-4">Welcome to InvestiGators!</p>
+        <Image src={require('./img/banner.jpg').default} alt ="banner" fluid /> 
+          <p>
+          This is a simple Jumbotron example.
+        </p>
+      </Jumbotron>
     </div>
+    <div> 
+      <a class="btn btn-outline-success" href="/stockpage" role="button">Click here to browse through the stocks!</a>
+    </div>
+    <br></br>
+    <div>
+      <Container>
+        <Row >
+          <Col ><Image src={require('./img/stocks.png').default} alt ="stocks"/> </Col>
+          <Col ><Image src={require('./img/financeDuration.png').default} alt ="finance"/> </Col>
+          <Col ><Image src={require('./img/investmentPortfolio.png').default} alt ="invest"/></Col>
+
+        </Row>
+        <br></br>
+        <Row >
+          <Col sm><div class="p-3 mb-2 bg-light text-dark">Get started on your investing journey!</div></Col>
+          <Col sm><div class="p-3 mb-2 bg-light text-dark">Browse and track various stocks!</div></Col>
+          <Col sm><div class="p-3 mb-2 bg-light text-dark">Build up your stock portfolio!</div></Col>
+        </Row>
+
+      </Container>      
+    </div>
+   </div>
   );
 }
