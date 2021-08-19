@@ -1,7 +1,7 @@
 import React from "react";
 import StockPage from "./components/StockPage/StockPage";
 import LandingPage from "./components/LandingPage/LandingPage";
-import GraphPage from "./components/GraphPage/GraphPage";
+// import GraphPage from "./components/GraphPage/GraphPage";
 import Navbar from "./components/NavBar/NavBar";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 //import "./App.css";
@@ -22,7 +22,7 @@ function App() {
                 <Switch>
                   <Route path="/" exact component={LandingPage} />
                   <Route path="/stockpage" exact component={StockPage} />
-                  <Route path="/graphpage" exact component={GraphPage} />
+                  {/* <Route path="/graphpage" exact component={GraphPage} /> */}
                 </Switch>
               </div>
             </div>
