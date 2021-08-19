@@ -9,7 +9,7 @@ import {
 } from "recharts";
 import React from "react";
 
-let data = require("../../data/AAPL_stonks.json");
+let data = require("../../data/stock_data/AAPL_stonks.json");
 
 /**
  * clean formats the date string into the JS datetime object
