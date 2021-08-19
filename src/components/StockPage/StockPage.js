@@ -7,6 +7,7 @@ import db from "../../firebase";
 
 export default function StockPage() {
   const [stocks, setStocks] = useState([]);
+  const [topstocks, setTopStocks] = useState([])
   const [search, setSearch] = useState("");
   const [filter, setFilter] = useState("all");
   useEffect(() => {
@@ -19,7 +20,6 @@ export default function StockPage() {
           title: doc.data().title,
           sector: doc.data().sector,
           symbol: doc.data().symbol,
-
         }))
       );
     });
@@ -37,9 +37,12 @@ export default function StockPage() {
       : filtered_by_search.filter((s) => s.sector.toLowerCase() === filter);
   }
   function getStock(symbol) {
-    console.log(symbol)
+    console.log(symbol);
   }
   function Stock({ stocks }) {
+    if (stocks.length === 0) {
+      return <h2>No Matching Stock</h2>;
+    }
     return (
       <div>
         <Fade bottom cascade={true}>
@@ -53,11 +56,11 @@ export default function StockPage() {
                   </p>
                   <div className="stock-price">
                     <div>{stock.score}</div>
-                    <Link
-                      to="/graphpage"
-                      className="nav-links"
-                    >
-                      <button className="button primary" onClick={getStock(stock.symbol)}>
+                    <Link to="/graphpage" className="nav-links">
+                      <button
+                        className="button primary"
+                        onClick={getStock(stock.symbol)}
+                      >
                         View Stock in detail
                       </button>
                     </Link>
@@ -90,11 +93,18 @@ export default function StockPage() {
   }
   return (
     <div>
-      <div>
+      <div className="filter-div">
         <SearchBar onChange={handleSearch} value={search} />
-        <Filter />
+        {search === "" ? null : <Filter />}
       </div>
-      <Stock stocks={filterBySearch(stocks)} />
+      <h1>
+        Welcome to the Stock Page, use the Search Bar to find your favorite
+        stocks
+      </h1>
+      {search === "" ? null : <Stock stocks={filterBySearch(stocks)} />}
+      <div className="trending-div">
+        <h1>Top Trending</h1>
+      </div>
     </div>
   );
 }
