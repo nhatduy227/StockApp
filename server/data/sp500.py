@@ -7,6 +7,9 @@ continuously adds in end-of-day stocks daily.
 
 import pandas as pd
 import yfinance as yf
+from sqlalchemy import create_engine
+import psycopg2 
+import io
 
 def read_in_sp500(
     URL: str = 'https://en.wikipedia.org/wiki/List_of_S%26P_500_companies',
@@ -32,7 +35,7 @@ def get_stock_data(
 
        Note: This function should only run once  
     '''
-    sp500_tickers = read_in_sp500()['Symbol'][:1]
+    sp500_tickers = read_in_sp500()['Symbol']
     
     # Batch calls all stock tickers
     sp500_df = yf.download(
@@ -47,6 +50,19 @@ def get_stock_data(
 # ---------------------------------------------------
 
 
+
 if __name__ == '__main__':
+    db_url = 'postgresql://postgres:password@localhost:5432/stocks'
+    engine = create_engine(db_url)
     df = get_stock_data()
-    print(df)
+
+    df.head(0).to_sql('stock_data', engine, if_exists='replace') #drops old table and creates new empty table
+
+    conn = engine.raw_connection()
+    cur = conn.cursor()
+    output = io.StringIO()
+    df.to_csv(output, sep='\t', header=False, index=False)
+    output.seek(0)
+    contents = output.getvalue()
+    cur.copy_from(output, 'stock_data', null="") # null values become ''
+    conn.commit()
