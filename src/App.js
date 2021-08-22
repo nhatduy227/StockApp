@@ -21,7 +21,7 @@ function App() {
                 <Switch>
                   <Route path="/" exact component={LandingPage} />
                   <Route path="/stockpage" exact component={StockPage} />
-                  <Route path="/graphpage" exact component={GraphPage} />
+                  <Route path="/graphpage/:ticker" component={GraphPage} />
                 </Switch>
               </div>
             </div>
