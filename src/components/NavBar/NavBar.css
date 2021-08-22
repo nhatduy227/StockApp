@@ -4,12 +4,15 @@
   align-items: center;
   height: 100px;
   max-width: 1500px;
+  margin-left: 10%;
+  margin-right: 5%;
+  margin-bottom: 5%;
 }
 
 .navbar-logo {
   color: #000000;
   justify-self: start;
-  margin-left: 20px;
+  margin-left: 10px;
   cursor: pointer;
   text-decoration: none;
   font-size: 2rem;
@@ -49,6 +52,9 @@
 .nav-links:hover {
   border-bottom: 4px solid #fff;
   transition: all 0.2s ease-out;
+  color: #28a745;
+  text-decoration: #28a745 underline;
+  font-weight: bold;
 }
 
 .fa-bars {
@@ -95,12 +101,6 @@
     display: table;
   }
 
-  .nav-links:hover {
-    background-color: #fff;
-    color: #242424;
-    border-radius: 0;
-  }
-
   .navbar-logo {
     position: absolute;
     top: 0;
@@ -143,4 +143,11 @@
     color: #242424;
     transition: 250ms;
   }
+}
+.display-6:hover {
+  border-bottom: 4px solid #fff;
+  transition: all 0.2s ease-out;
+  color: #28a745;
+  text-decoration: #28a745 underline;
+  font-weight: bold;
 }
