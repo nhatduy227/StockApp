@@ -9,31 +9,6 @@ import {
 } from "recharts";
 import React, { useEffect, useState } from "react";
 
-// let data = require("../../data/stock_data/AAPL_stonks.json");
-
-// /**
-//  * clean formats the date string into the JS datetime object
-//  * and sorts the array of stock data by the date from earliest-latest
-//  * @returns stock data
-//  */
-// function clean() {
-//   for (let day of data) {
-//     day.date = new Date(day.date);
-//   }
-
-//   data.sort((day1, day2) => {
-//     if (day1.date < day2.date) return -1;
-//     if (day1.date > day2.date) return 1;
-//     return 0;
-//   });
-
-//   for (let day of data) {
-//     day.date = new Date(day.date).toISOString().substr(0, 10);
-//   }
-
-//   return data;
-// }
-
 // function getRangeOfStock(range) {
 //   let cleanedData = clean();
 //   let newData = [];
@@ -64,6 +39,25 @@ import React, { useEffect, useState } from "react";
 //   }
 // }
 
+function sortByDate(data) {
+  data = data.sort(function (a, b) {
+    // Turn your strings into dates, and then subtract them
+    // to get a value that is either negative, positive, or zero.
+    return new Date(a.date) - new Date(b.date);
+  });
+  return data;
+}
+
+function cleanData(data) {
+  data = sortByDate(data);
+  return data.map((item) => {
+    const obj = Object.assign({}, item);
+    obj["date"] = new Date(obj["date"]).toISOString().substr(0, 10);
+    obj["close"] = parseFloat(obj["close"].toFixed(2));
+    return obj;
+  });
+}
+
 function Graph(props) {
   let ticker = props.ticker;
 
@@ -72,7 +66,8 @@ function Graph(props) {
   const getData = async (ticker) => {
     try {
       const response = await fetch(`http://localhost:5000/stock/${ticker}`);
-      const data = await response.json();
+      let data = await response.json();
+      data = cleanData(data);
       setData(data);
     } catch (err) {
       console.error(err.message);
@@ -104,7 +99,7 @@ function Graph(props) {
           axisLine={false}
           tickLine={false}
           tickCount={7}
-          tickFormatter={(number) => `$${number.toFixed(2)}`}
+          tickFormatter={(number) => `$${number}`}
         />
         <Tooltip />
         <CartesianGrid opacity={0.7} vertical={false} />
