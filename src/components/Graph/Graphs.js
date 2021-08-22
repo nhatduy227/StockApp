@@ -7,67 +7,84 @@ import {
   Tooltip,
   CartesianGrid,
 } from "recharts";
-import React from "react";
+import React, { useEffect, useState } from "react";
 
-let data = require("../../data/stock_data/AAPL_stonks.json");
+// let data = require("../../data/stock_data/AAPL_stonks.json");
 
-/**
- * clean formats the date string into the JS datetime object
- * and sorts the array of stock data by the date from earliest-latest
- * @returns stock data
- */
-function clean() {
-  for (let day of data) {
-    day.date = new Date(day.date);
-  }
+// /**
+//  * clean formats the date string into the JS datetime object
+//  * and sorts the array of stock data by the date from earliest-latest
+//  * @returns stock data
+//  */
+// function clean() {
+//   for (let day of data) {
+//     day.date = new Date(day.date);
+//   }
 
-  data.sort((day1, day2) => {
-    if (day1.date < day2.date) return -1;
-    if (day1.date > day2.date) return 1;
-    return 0;
-  });
+//   data.sort((day1, day2) => {
+//     if (day1.date < day2.date) return -1;
+//     if (day1.date > day2.date) return 1;
+//     return 0;
+//   });
 
-  for (let day of data) {
-    day.date = new Date(day.date).toISOString().substr(0, 10);
-  }
+//   for (let day of data) {
+//     day.date = new Date(day.date).toISOString().substr(0, 10);
+//   }
 
-  return data;
-}
+//   return data;
+// }
 
-function getRangeOfStock(range) {
-  let cleanedData = clean();
-  let newData = [];
-  switch (range) {
-    case "5d":
-      return cleanedData.slice(-5);
-    case "1m":
-      return cleanedData.slice(-31);
-    case "6m":
-      return cleanedData.slice(-180);
-    case "ytd":
-      return cleanedData.slice(-360);
-    case "1y":
-      let yearAgo = new Date(
-        new Date().setFullYear(new Date().getFullYear() - 1)
-      );
-      for (let day of cleanedData) {
-        let date = new Date(day.date);
-        if (date > yearAgo) {
-          newData.push(day);
-        }
-      }
-      return newData;
-    case "5y":
-      return cleanedData.slice(-1800);
-    case "max":
-      return cleanedData;
-  }
-}
+// function getRangeOfStock(range) {
+//   let cleanedData = clean();
+//   let newData = [];
+//   switch (range) {
+//     case "5d":
+//       return cleanedData.slice(-5);
+//     case "1m":
+//       return cleanedData.slice(-31);
+//     case "6m":
+//       return cleanedData.slice(-180);
+//     case "ytd":
+//       return cleanedData.slice(-360);
+//     case "1y":
+//       let yearAgo = new Date(
+//         new Date().setFullYear(new Date().getFullYear() - 1)
+//       );
+//       for (let day of cleanedData) {
+//         let date = new Date(day.date);
+//         if (date > yearAgo) {
+//           newData.push(day);
+//         }
+//       }
+//       return newData;
+//     case "5y":
+//       return cleanedData.slice(-1800);
+//     case "max":
+//       return cleanedData;
+//   }
+// }
 
-function Graph({ selectedRange }) {
+function Graph(props) {
+  let ticker = props.ticker;
+
+  const [data, setData] = useState([]);
+
+  const getData = async (ticker) => {
+    try {
+      const response = await fetch(`http://localhost:5000/stock/${ticker}`);
+      const data = await response.json();
+      setData(data);
+    } catch (err) {
+      console.error(err.message);
+    }
+  };
+  useEffect(() => {
+    getData(ticker);
+  }, []);
+
   return (
     <ResponsiveContainer width="100%" height={400}>
-      <AreaChart data={getRangeOfStock(selectedRange)}>
+      <AreaChart data={data}>
         <defs>
           <linearGradient id="color" x1="0" y1="0" x2="0" y2="1">
             <stop offset="0%" stopColor="#85F485" stopOpacity={0.4} />
