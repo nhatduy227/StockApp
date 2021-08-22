@@ -5,17 +5,16 @@ import Card from "react-bootstrap/Card";
 import Container from "react-bootstrap/Container"
 
 
-
-export default function GraphPage() {
-  const [selectedRange, setSelectedRange] = useState("max");
+export default function GraphPage(props) {
+  const [range, setRange] = useState("max");
 
   return (
     <Container>
       <h1>AAPL Stock</h1>
       <Card>
-        <RangeSelect setSelectedRange={setSelectedRange}/>
+        <RangeSelect setRange={setRange}/>
         <Card.Body>
-          <Graph selectedRange={selectedRange}/>
+          <Graph ticker={props.match.params.ticker} range={range}/>
         </Card.Body>
       </Card>
   </Container>
