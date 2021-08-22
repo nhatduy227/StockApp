@@ -9,35 +9,34 @@ import {
 } from "recharts";
 import React, { useEffect, useState } from "react";
 
-// function getRangeOfStock(range) {
-//   let cleanedData = clean();
-//   let newData = [];
-//   switch (range) {
-//     case "5d":
-//       return cleanedData.slice(-5);
-//     case "1m":
-//       return cleanedData.slice(-31);
-//     case "6m":
-//       return cleanedData.slice(-180);
-//     case "ytd":
-//       return cleanedData.slice(-360);
-//     case "1y":
-//       let yearAgo = new Date(
-//         new Date().setFullYear(new Date().getFullYear() - 1)
-//       );
-//       for (let day of cleanedData) {
-//         let date = new Date(day.date);
-//         if (date > yearAgo) {
-//           newData.push(day);
-//         }
-//       }
-//       return newData;
-//     case "5y":
-//       return cleanedData.slice(-1800);
-//     case "max":
-//       return cleanedData;
-//   }
-// }
+function getRangeOfStock(data, range) {
+  let newData = [];
+  switch (range) {
+    case "5d":
+      return data.slice(-5);
+    case "1m":
+      return data.slice(-31);
+    case "6m":
+      return data.slice(-180);
+    case "ytd":
+      return data.slice(-360);
+    case "1y":
+      let yearAgo = new Date(
+        new Date().setFullYear(new Date().getFullYear() - 1)
+      );
+      for (let day of data) {
+        let date = new Date(day.date);
+        if (date > yearAgo) {
+          newData.push(day);
+        }
+      }
+      return newData;
+    case "5y":
+      return data.slice(-1800);
+    case "max":
+      return data;
+  }
+}
 
 function sortByDate(data) {
   data = data.sort(function (a, b) {
@@ -60,14 +59,13 @@ function cleanData(data) {
 
 function Graph(props) {
   let ticker = props.ticker;
-
+  let newData;
   const [data, setData] = useState([]);
 
   const getData = async (ticker) => {
     try {
       const response = await fetch(`http://localhost:5000/stock/${ticker}`);
       let data = await response.json();
-      data = cleanData(data);
       setData(data);
     } catch (err) {
       console.error(err.message);
@@ -77,9 +75,11 @@ function Graph(props) {
     getData(ticker);
   }, []);
 
+  newData = cleanData(data);
+  newData = getRangeOfStock(newData, props.range);
   return (
     <ResponsiveContainer width="100%" height={400}>
-      <AreaChart data={data}>
+      <AreaChart data={newData}>
         <defs>
           <linearGradient id="color" x1="0" y1="0" x2="0" y2="1">
             <stop offset="0%" stopColor="#85F485" stopOpacity={0.4} />
