@@ -7,7 +7,7 @@ import db from "../../firebase";
 
 export default function StockPage() {
   const [stocks, setStocks] = useState([]);
-  const [topstocks, setTopStocks] = useState([])
+  const [topstocks, setTopStocks] = useState([]);
   const [search, setSearch] = useState("");
   const [filter, setFilter] = useState("all");
   useEffect(() => {
@@ -24,10 +24,12 @@ export default function StockPage() {
       );
     });
   }, []);
+
   function handleSearch(e) {
     console.log(e.target.value);
     setSearch(e.target.value);
   }
+
   function filterBySearch(array) {
     const filtered_by_search = array.filter((s) =>
       s.title.toLowerCase().includes(search.toLowerCase())
@@ -36,9 +38,11 @@ export default function StockPage() {
       ? filtered_by_search
       : filtered_by_search.filter((s) => s.sector.toLowerCase() === filter);
   }
+
   function getStock(symbol) {
     console.log(symbol);
   }
+
   function Stock({ stocks }) {
     if (stocks.length === 0) {
       return <h2>No Matching Stock</h2>;
@@ -56,7 +60,12 @@ export default function StockPage() {
                   </p>
                   <div className="stock-price">
                     <div>{stock.score}</div>
-                    <Link to="/graphpage" className="nav-links">
+                    <Link
+                      to={{
+                        pathname: `/graphpage/${stock.symbol}`,
+                      }}
+                      className="nav-links"
+                    >
                       <button
                         className="button primary"
                         onClick={getStock(stock.symbol)}
