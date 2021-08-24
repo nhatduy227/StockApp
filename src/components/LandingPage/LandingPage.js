@@ -30,9 +30,9 @@ export default function LandingPage() {
     <div>
       <Container>
         <Row >
-          <Col ><Image src={require('./img/stocks.png').default} alt ="stocks"/> </Col>
-          <Col ><Image src={require('./img/financeDuration.png').default} alt ="finance"/> </Col>
-          <Col ><Image src={require('./img/investmentPortfolio.png').default} alt ="invest"/></Col>
+          <Col ><Image src={require('./img/stocks.png')} alt ="stocks"/> </Col>
+          <Col ><Image src={require('./img/financeDuration.png')} alt ="finance"/> </Col>
+          <Col ><Image src={require('./img/investmentPortfolio.png')} alt ="invest"/></Col>
 
         </Row>
         <br></br>
