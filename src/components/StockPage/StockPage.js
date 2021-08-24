@@ -7,7 +7,6 @@ import db from "../../firebase";
 
 export default function StockPage() {
   const [stocks, setStocks] = useState([]);
-  const [topstocks, setTopStocks] = useState([])
   const [search, setSearch] = useState("");
   const [filter, setFilter] = useState("all");
   useEffect(() => {
@@ -28,6 +27,7 @@ export default function StockPage() {
     console.log(e.target.value);
     setSearch(e.target.value);
   }
+
   function filterBySearch(array) {
     const filtered_by_search = array.filter((s) =>
       s.title.toLowerCase().includes(search.toLowerCase())
@@ -36,8 +36,17 @@ export default function StockPage() {
       ? filtered_by_search
       : filtered_by_search.filter((s) => s.sector.toLowerCase() === filter);
   }
-  function getStock(symbol) {
-    console.log(symbol);
+  function compareScore(a,b) {
+    if (a.score > b.score)
+       return -1;
+    if (a.score < b.score)
+      return 1;
+    return 0;
+  }
+
+  function TopStock({ stocks }) {
+    const topstocks = stocks.filter((s) => s.score > 70).sort(compareScore);
+    return <Stock stocks={topstocks} />;
   }
   function Stock({ stocks }) {
     if (stocks.length === 0) {
@@ -56,11 +65,13 @@ export default function StockPage() {
                   </p>
                   <div className="stock-price">
                     <div>{stock.score}</div>
-                    <Link to="/graphpage" className="nav-links">
-                      <button
-                        className="button primary"
-                        onClick={getStock(stock.symbol)}
-                      >
+                    <Link
+                      to={{
+                        pathname: `/graphpage/${stock.symbol}`,
+                      }}
+                      className="nav-links"
+                    >
+                      <button className="button primary">
                         View Stock in detail
                       </button>
                     </Link>
@@ -97,13 +108,10 @@ export default function StockPage() {
         <SearchBar onChange={handleSearch} value={search} />
         {search === "" ? null : <Filter />}
       </div>
-      <h1>
-        Welcome to the Stock Page, use the Search Bar to find your favorite
-        stocks
-      </h1>
       {search === "" ? null : <Stock stocks={filterBySearch(stocks)} />}
       <div className="trending-div">
         <h1>Top Trending</h1>
+        <TopStock stocks={stocks} />
       </div>
     </div>
   );

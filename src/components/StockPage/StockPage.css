@@ -40,7 +40,6 @@
 .stock-price div,
 .stock-price button {
   text-align: center;
-  /* flex: 1; */
 }
 .stock-price div {
   font-size: 2rem;
@@ -76,9 +75,9 @@
 
 .trending-div {
   display: flex;
+  align-items: left;
+  flex-direction: column;
   font-size: medium;
-  padding: 1rem;
-  margin: 1rem;
 }
 
 h1 {
@@ -86,7 +85,6 @@ h1 {
   align-items: center;
   justify-content: center;
   font-size: medium;
-
 }
 
 h2 {
@@ -97,5 +95,5 @@ h2 {
 }
 
 p {
-  font-size: x-small;
+  font-size: small;
 }
