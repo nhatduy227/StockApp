@@ -11,7 +11,7 @@ export default function LandingPage() {
           <Row>
             <Col sm="12"><p class="display-4 text-success"><b>Making stock reviews easy for you!</b></p></Col>
           <Row>
-            <Col md="9" className="align-left" ><p class="display-5"><br /><br /> Investing is for everyone, whether you're just getting into it or are an industry professional. We're here to help make navigating your options a little easier. <br /> <br />
+            <Col md="9" className="align-left" ><p class="lead"><br /><br /> Investing is for everyone, whether you're just getting into it or are an industry professional. We're here to help make navigating your options a little easier. <br /> <br />
             → Say goodbye to the cluttered dashboard you're used to seeing. <br /> 
               Our minimalistic UI is made with your accessibility in mind!</p></Col>
             <Col sm="3"><Image src={require('./img/chibi_transparent_crop.png')} alt ="chibi" fluid width="175px" height="175px"/></Col>
