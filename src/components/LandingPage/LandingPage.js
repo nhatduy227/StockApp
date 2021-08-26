@@ -1,5 +1,6 @@
 import React from "react";
 import { Container, Row, Col, Image, Jumbotron} from 'react-bootstrap';
+import "./LandingPage.css";
 
 export default function LandingPage() {
   return (

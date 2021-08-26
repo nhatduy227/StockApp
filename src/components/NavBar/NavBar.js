@@ -1,41 +1,31 @@
-import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-import "./NavBar.css";
+import React from "react";
+import { Container, Navbar, Nav} from 'react-bootstrap';
 
-function Navbar() {
-  const [click, setClick] = useState(false);
-
-  const handleClick = () => setClick(!click);
-  const closeMobileMenu = () => setClick(false);
-
+function Navibar() {
   return (
-      <div className="navbar-container">
-        
-        <img src={process.env.PUBLIC_URL + '/favicon.ico'} alt="favicon"/>
-        <Link to="/" className="navbar-logo" onClick={closeMobileMenu}>
-          <h1 class="display-6">InvestiGators</h1>
-        </Link>
-        <div className="menu-icon" onClick={handleClick}>
-          <i className={click ? "fas fa-times" : "fas fa-bars"} />
-        </div>
-        <ul className={click ? "nav-menu active" : "nav-menu"}>
-          <li className="nav-item">
-            <Link to="/" className="nav-links" onClick={closeMobileMenu}>
-              Home
-            </Link>
-          </li>
-          <li className="nav-item">
-            <Link
-              to="/stockpage"
-              className="nav-links"
-              onClick={closeMobileMenu}
-            >
-              StockPage
-            </Link>
-          </li>
-        </ul>
-      </div>
+    <Navbar expand="lg">
+      <Container>
+        <Navbar.Brand href="/">
+          <img
+            alt="favicon"
+            src={process.env.PUBLIC_URL + '/favicon.ico'}
+            width="30"
+            height="30"
+            className="d-inline-block align-top"
+          />{' '}
+          InvestiGators</Navbar.Brand>
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Collapse id="basic-navbar-nav">
+          <Nav className="me-auto">
+            <Nav.Link href="/">Home</Nav.Link>
+            <Nav.Link href="/stockpage">Stocks</Nav.Link>
+          </Nav>
+        </Navbar.Collapse>
+      </Container>
+    </Navbar>
+
+      
   );
 }
 
-export default Navbar;
+export default Navibar;
