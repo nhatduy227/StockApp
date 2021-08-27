@@ -1,5 +1,6 @@
 .searchbar {
   display: flex;
-  border-width:0px;
-  border:none;
+  border-radius: 20px;
+  outline: none;
+  border-color: #85f485;
 }
