@@ -3,7 +3,7 @@ import { Container, Navbar, Nav, NavDropdown } from "react-bootstrap";
 
 function Navibar() {
   return (
-    <Navbar bg="light" expand="lg">
+    <Navbar expand="lg">
       <Container>
         <Navbar.Brand href="/">
           <img
