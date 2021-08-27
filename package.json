@@ -8,6 +8,7 @@
     "@testing-library/user-event": "^12.1.10",
     "bootstrap": "^4.6.0",
     "cheerio": "^1.0.0-rc.10",
+    "chokidar": "^3.5.2",
     "date-fns": "^2.23.0",
     "firebase": "^8.8.0",
     "react": "^17.0.1",

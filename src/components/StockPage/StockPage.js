@@ -6,7 +6,40 @@ import "./StockPage.css";
 import db from "../../firebase";
 
 export default function StockPage() {
-  const [stocks, setStocks] = useState([]);
+  const [stocks, setStocks] = useState([
+    {
+      image:
+        "https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg",
+      score: 76,
+      sector: "Consumer Discretionary",
+      title: "Amazon",
+      symbol: "AMZN",
+    },
+    {
+      image:
+        "https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg",
+      score: 76,
+      sector: "Consumer Discretionary",
+      title: "Amazon",
+      symbol: "AMZN",
+    },
+    {
+      image:
+        "https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg",
+      score: 76,
+      sector: "Consumer Discretionary",
+      title: "Amazon",
+      symbol: "AMZN",
+    },
+    {
+      image:
+        "https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg",
+      score: 76,
+      sector: "Consumer Discretionary",
+      title: "Amazon",
+      symbol: "AMZN",
+    },
+  ]);
   const [search, setSearch] = useState("");
   const [filter, setFilter] = useState("all");
   useEffect(() => {
@@ -36,11 +69,9 @@ export default function StockPage() {
       ? filtered_by_search
       : filtered_by_search.filter((s) => s.sector.toLowerCase() === filter);
   }
-  function compareScore(a,b) {
-    if (a.score > b.score)
-       return -1;
-    if (a.score < b.score)
-      return 1;
+  function compareScore(a, b) {
+    if (a.score > b.score) return -1;
+    if (a.score < b.score) return 1;
     return 0;
   }
 
@@ -64,16 +95,14 @@ export default function StockPage() {
                     {stock.title} - {stock.sector}
                   </p>
                   <div className="stock-price">
-                    <div>{stock.score}</div>
+                    <div className="stock-score">{stock.score}</div>
                     <Link
                       to={{
                         pathname: `/graphpage/${stock.symbol}`,
                       }}
                       className="nav-links"
                     >
-                      <button className="button primary">
-                        View Stock in detail
-                      </button>
+                      <button className="button primary">View Stock</button>
                     </Link>
                   </div>
                 </div>
@@ -102,6 +131,7 @@ export default function StockPage() {
       </section>
     );
   }
+  console.log(stocks);
   return (
     <div>
       <div className="filter-div">
