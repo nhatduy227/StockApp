@@ -74,7 +74,10 @@
   padding: 1rem;
   margin: 1rem;
 }
-
+.filter {
+  border-radius: 20px;
+  background-color: #85f485;
+}
 .trending-div {
   display: flex;
   align-items: left;
