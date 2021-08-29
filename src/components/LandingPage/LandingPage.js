@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Row, Col, Image, Jumbotron } from "react-bootstrap";
+import { Container, Row, Col, Image, Jumbotron, Button } from "react-bootstrap";
 import "./LandingPage.css";
 
 export default function LandingPage() {
@@ -46,10 +46,24 @@ export default function LandingPage() {
       </div>
       <div className="text-center">
         <div>
-          <a class="btn btn-outline-success" href="/stockpage" role="button">
+          <a
+            class="btn btn-outline-success"
+            href="/stockpage"
+            role="button"
+            style={{ marginRight: "3%" }}
+          >
+            Top Trending Information Technology Companies
+          </a>
+
+          <a
+            class="btn btn-outline-success"
+            href="/browsestockpage"
+            role="button"
+          >
             Click here to browse through the stocks!
           </a>
         </div>
+
         <br></br>
         <br></br>
         <div>
