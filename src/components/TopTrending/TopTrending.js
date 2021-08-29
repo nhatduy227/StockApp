@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./TopTrending.css";
+import './TopTrending.css'
 // carousel imports
 // not needed -> import "./App.css";
 //import { useState } from "react";
