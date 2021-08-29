@@ -107,7 +107,11 @@ export default function StockPage() {
   function Filter() {
     return (
       <section id="Filters">
-        <select value={filter} onChange={(e) => setFilter(e.target.value)}>
+        <select
+          className="filter"
+          value={filter}
+          onChange={(e) => setFilter(e.target.value)}
+        >
           <option value="all">All</option>
           <option value="energy">Energy</option>
           <option value="financials">Financials</option>
@@ -122,6 +126,7 @@ export default function StockPage() {
       </section>
     );
   }
+  console.log(stocks);
   return (
     <div>
       <div className="filter-div">
