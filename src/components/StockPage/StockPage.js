@@ -86,7 +86,7 @@ export default function StockPage() {
                     {stock.title} - {stock.sector}
                   </p>
                   <div className="stock-price">
-                    <div>{stock.score}</div>
+                    <div className="stock-score">{stock.score}</div>
                     <Link
                       to={{
                         pathname: `/graphpage/${stock.symbol}`,
