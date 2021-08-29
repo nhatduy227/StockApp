@@ -6,7 +6,40 @@ import "./StockPage.css";
 import db from "../../firebase";
 
 export default function StockPage() {
-  const [stocks, setStocks] = useState([]);
+  const [stocks, setStocks] = useState([
+    {
+      image:
+        "https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg",
+      score: 76,
+      sector: "Consumer Discretionary",
+      title: "Amazon",
+      symbol: "AMZN",
+    },
+    {
+      image:
+        "https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg",
+      score: 76,
+      sector: "Consumer Discretionary",
+      title: "Amazon",
+      symbol: "AMZN",
+    },
+    {
+      image:
+        "https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg",
+      score: 76,
+      sector: "Consumer Discretionary",
+      title: "Amazon",
+      symbol: "AMZN",
+    },
+    {
+      image:
+        "https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg",
+      score: 76,
+      sector: "Consumer Discretionary",
+      title: "Amazon",
+      symbol: "AMZN",
+    },
+  ]);
   const [search, setSearch] = useState("");
   const [filter, setFilter] = useState("all");
   useEffect(() => {
@@ -36,16 +69,7 @@ export default function StockPage() {
       ? filtered_by_search
       : filtered_by_search.filter((s) => s.sector.toLowerCase() === filter);
   }
-  function compareScore(a, b) {
-    if (a.score > b.score) return -1;
-    if (a.score < b.score) return 1;
-    return 0;
-  }
 
-  function TopStock({ stocks }) {
-    const topstocks = stocks.filter((s) => s.score > 70).sort(compareScore);
-    return <Stock stocks={topstocks} />;
-  }
   function Stock({ stocks }) {
     if (stocks.length === 0) {
       return <h2>No Matching Stock</h2>;
@@ -69,9 +93,7 @@ export default function StockPage() {
                       }}
                       className="nav-links"
                     >
-                      <button className="button primary">
-                        View Stock in detail
-                      </button>
+                      <button className="button primary">View Stock</button>
                     </Link>
                   </div>
                 </div>
@@ -106,12 +128,7 @@ export default function StockPage() {
         <SearchBar onChange={handleSearch} value={search} />
         {search === "" ? null : <Filter />}
       </div>
-      {search === "" ? null : <Stock stocks={filterBySearch(stocks)} />}
-      <div className="trending-div">
-        <h1>Top Trending</h1>
-        {/* <TopStock stocks={stocks} /> */}
-
-      </div>
+      <Stock stocks={filterBySearch(stocks)} />
     </div>
   );
 }
