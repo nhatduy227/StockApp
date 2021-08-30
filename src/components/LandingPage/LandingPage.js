@@ -17,7 +17,7 @@ export default function LandingPage() {
                 </Col>
                 <Row>
                   <Col md="9" className="align-left">
-                    <p class="display-5">
+                    <p class="lead">
                       <br />
                       <br /> Investing is for everyone, whether you're just
                       getting into it or are an industry professional. We're
@@ -46,10 +46,24 @@ export default function LandingPage() {
       </div>
       <div className="text-center">
         <div>
-          <a class="btn btn-outline-success" href="/stockpage" role="button">
+          <a
+            class="btn btn-outline-success"
+            href="/stockpage"
+            role="button"
+            style={{ marginRight: "3%" }}
+          >
+            Top Trending Information Technology Companies
+          </a>
+
+          <a
+            class="btn btn-outline-success"
+            href="/browsestockpage"
+            role="button"
+          >
             Click here to browse through the stocks!
           </a>
         </div>
+
         <br></br>
         <br></br>
         <div>
