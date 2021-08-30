@@ -32,27 +32,28 @@ Create build package for optimizing deployment process
 ### `firebase deploy`
 Manually deploy new changes to the live site at: https://stockapp-6e0a4.web.app
 
+# Get Started with Database
 
-# Create S&P 500 PostgreSQL Database
-## Login to PostgreSQL
+## Create S&P 500 PostgreSQL Database
+### Login to PostgreSQL
     psql -U postgres
 
-## Create `stock` database
+### Create `stock` database
     CREATE DATABASE stocks;
 
-## Change to db
+### Change to db
     \c stocks;
 
-# Retrieve S&P 500 Data
-## Create Python environment
+## Retrieve S&P 500 Data
+### Create Python environment
     conda create --name cs375
     python3 -m venv cs375
 
-## Activating Python environment
+### Activating Python environment
     conda activate cs375
     source cs375/bin/activate
 
-## Install Python Packages
+### Install Python Packages
     pip install pandas yfinance sqlalchemy
 
 ## Go and run Python script
@@ -60,7 +61,7 @@ Near the end of the file, you'll have to edit the password for the `db_url`. The
 
     cd server/data && python sp500.py
 
-# Setup server for db
+## Setup server for db
 Once the script's done running, you'll have to run a seperate server along side of the React app, so that the app can get the historical stock data.
 
     cd server && node index.js
