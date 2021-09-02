@@ -3,43 +3,11 @@ import Fade from "react-reveal/Fade";
 import SearchBar from "../SearchBar/SearchBar";
 import { Link } from "react-router-dom";
 import "./StockPage.css";
+import data from './data.json'
 import db from "../../firebase";
 
 export default function StockPage() {
-  const [stocks, setStocks] = useState([
-    {
-      image:
-        "https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg",
-      score: 76,
-      sector: "Consumer Discretionary",
-      title: "Amazon",
-      symbol: "AMZN",
-    },
-    {
-      image:
-        "https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg",
-      score: 76,
-      sector: "Consumer Discretionary",
-      title: "Amazon",
-      symbol: "AMZN",
-    },
-    {
-      image:
-        "https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg",
-      score: 76,
-      sector: "Consumer Discretionary",
-      title: "Amazon",
-      symbol: "AMZN",
-    },
-    {
-      image:
-        "https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg",
-      score: 76,
-      sector: "Consumer Discretionary",
-      title: "Amazon",
-      symbol: "AMZN",
-    },
-  ]);
+  const [stocks, setStocks] = useState(data);
   const [search, setSearch] = useState("");
   const [filter, setFilter] = useState("all");
   useEffect(() => {
@@ -142,11 +110,11 @@ export default function StockPage() {
         <SearchBar onChange={handleSearch} value={search} />
         {search === "" ? null : <Filter />}
       </div>
-      {search === "" ? null : <Stock stocks={filterBySearch(stocks)} />}
-      <div className="trending-div">
-        <h1>Top Trending</h1>
+      {search === "" ? (
         <TopStock stocks={stocks} />
-      </div>
+      ) : (
+        <Stock stocks={filterBySearch(stocks)} />
+      )}
     </div>
   );
 }
